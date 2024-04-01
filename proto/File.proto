@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+service FileService {
+  rpc UploadFile(FileUploadRequest) returns (FileUploadResponse);
+}
+
+message FileUploadRequest {
+  bytes file_content = 1;
+  string file_name = 2;
+}
+
+message Error {
+    int32 code = 1;
+    string message = 2;
+}
+
+message FileUploadResponse {
+  optional string message = 1;
+  optional Error error = 2;
+}
